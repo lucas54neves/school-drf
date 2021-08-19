@@ -20,6 +20,7 @@ source venv/bin/activate
 
 ```
 pip install <dependency-name>
+pip install -r requirements.txt
 ```
 
 ### Create the project
