@@ -20,6 +20,19 @@ class ReviewSerializer(serializers.ModelSerializer):
         )
 
 class CourseSerializer(serializers.ModelSerializer):
+    # Nested Relationship -> One-to-one
+    # reviews = ReviewSerializer(many=True, read_only=True)
+
+    # Hyperlinked Related Field -> Restful
+    # reviews = serializers.HyperlinkedRelatedField(
+    #     many=True,
+    #     read_only=True,
+    #     view_name='review-detail'
+    # )
+
+    # Primary Key Related Field -> Performance
+    reviews = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
+
     class Meta:
         model = Course
         fields = (
@@ -28,5 +41,6 @@ class CourseSerializer(serializers.ModelSerializer):
             'url',
             'created_at',
             'updated_at',
-            'active'
+            'active',
+            'reviews'
         )
